@@ -8,11 +8,12 @@ Please let me know if you have any questions. This was a fun challenge and I hop
 
 ## My Notes
 
-1. The Longitude and Latitude coordinates were reversed so I switched them.
-2. I printed out the elevation instead of the altitude. I wasn't able to find the right formula to convert either elevation or coordinates to altitude.
-3. I added the fuzzy keyword search to the sidebar. It searches the titles of each radar station.
-4. I wasn't able to add the sort by radar station closest to the users location. Again I couldn't find the right solution to sort by the coordinates. And to use the geolocation to get the users current location isn't ideal since it has to be done over https.
-5. I didn't create too many other components. It's a small app and wasn't reusing much so I thought best to keep everything together. I did create the radar station card as it's own component as it was repeated.
+1. I used Bootstrap as the CSS framework so there was minimal CSS needed.
+2. The Longitude and Latitude coordinates were reversed so I switched them.
+3. I printed out the elevation instead of the altitude. I wasn't able to find the right formula to convert either elevation or coordinates to altitude.
+4. I added the fuzzy keyword search to the sidebar. It searches the titles of each radar station.
+5. I wasn't able to add the sort by radar station closest to the users location. Again I couldn't find the right solution to sort by the coordinates. And to use the geolocation to get the users current location isn't ideal since it has to be done over https.
+6. I didn't create too many other components. It's a small app and wasn't reusing much so I thought best to keep everything together. I did create the radar station card as it's own component as it was repeated.
 
 ## Must-Have
 
