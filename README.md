@@ -8,7 +8,7 @@ Please let me know if you have any questions. This was a fun challenge and I hop
 
 ## My Notes
 
-1. I used Bootstrap as the CSS framework so there was minimal CSS needed.
+1. I used Bootstrap as the CSS framework so there wasn't much CSS needed. The CSS was written in SCSS.
 2. The Longitude and Latitude coordinates were reversed so I switched them.
 3. I printed out the elevation instead of the altitude. I wasn't able to find the right formula to convert either elevation or coordinates to altitude.
 4. I added the fuzzy keyword search to the sidebar. It searches the titles of each radar station.
