@@ -1,5 +1,5 @@
 import { useEffect, useState} from 'react'
-import { Button, Card, Col, Container, Form, FormControl, Row } from 'react-bootstrap'
+import { Button, Card, Col, Container, Form, FormControl, Navbar, Row } from 'react-bootstrap'
 import tz_lookup from 'tz-lookup'
 import ReactPaginate from 'react-paginate'
 
@@ -12,7 +12,6 @@ export default function App() {
 	const [error, setError] = useState(null)
 	const [isLoading, setIsLoading] = useState(false)
 	const [currentPage, setCurrentPage] = useState(0)
-	const [userLocation, setUserLocation] = useState({})
 	const PER_PAGE = 9
 	const offset = currentPage * PER_PAGE
 
@@ -22,8 +21,7 @@ export default function App() {
 			try {
 				const resp = await fetch('https://api.weather.gov/radar/stations')
 				const body = await resp.json()
-				// sort data by users location
-				const stations = body.features.sort()
+				const stations = body.features
 				setData(stations)
 				setIsLoading(false)
 			} catch(err) {
@@ -42,19 +40,6 @@ export default function App() {
 		const sortedTimezones = Array.from(newSet).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
 		setTimezone(sortedTimezones)
 	}, [data])
-
-	useEffect(() => {
-		const getUserLocation = () => {
-			if (!navigator.geolocation) {
-				console.log("Geolocation is not supported by this browser.")
-				return
-			}
-			navigator.geolocation.getCurrentPosition(position => {
-				setUserLocation({...position, lat: position.coords.latitude, lng: position.coords.longitude})
-			})
-		}
-		getUserLocation()
-	}, [])
 
 	const search = !(timezoneFilter || q) ? data : data.filter(station => {
 		if (filterType === 'filter') {
@@ -91,7 +76,7 @@ export default function App() {
 			{isLoading && <p className="p-3">Loading...</p>}
 			{!isLoading && <Container fluid>
 				<Row>
-					<aside className="col-12 col-lg-3 sidebar">
+					<aside className="col-12 col-lg-3 sidebar bg-dark">
 						<Form.Group>
 							<Form.Label>
 								<FormControl
@@ -103,25 +88,31 @@ export default function App() {
 								/>
 							</Form.Label>
 						</Form.Group>
-						<div className="d-grid gap-2">
-							{timezone && timezone.map(zone => (
-									<Button
-										variant="link"
-										key={zone}
-										onClick={() => handleFilter(zone)}
-										className="text-start text-white text-decoration-none py-0"
-										size="sm"
-									>
-										{zone}
-									</Button>
-							))}
-							<Button
-								variant="outline-light"
-								onClick={() => setFilterType('clear')}
-								className="text-start text-decoration-none py-0"
-								size="sm"
-							>Clear filter</Button>
-						</div>
+						<Navbar collapseOnSelect expand="lg" variant="dark" bg="dark">
+							<Container fluid className="align-items-lg-start">
+                <Navbar.Brand href="#home" className="text-white">Timezone Filter</Navbar.Brand>
+								<Navbar.Toggle aria-controls="basic-navbar-nav" />
+								<Navbar.Collapse id="basic-navbar-nav">
+									<div className="d-grid gap-2">
+										{timezone && timezone.map(zone => (
+											<Button
+												variant="link"
+												key={zone}
+												onClick={() => handleFilter(zone)}
+												className="text-start text-white text-decoration-none py-0"
+											>
+												{zone}
+											</Button>
+										))}
+										<Button
+											variant="outline-light"
+											onClick={() => setFilterType('clear')}
+											className="text-start text-decoration-none py-0"
+										>Clear filter</Button>
+									</div>
+								</Navbar.Collapse>
+							</Container>
+						</Navbar>
 					</aside>
 					<main className="col-12 col-lg-9 main">
 						<h1>Radar Stations</h1>
