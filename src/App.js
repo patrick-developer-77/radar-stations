@@ -1,7 +1,8 @@
 import { useEffect, useState} from 'react'
-import { Button, Card, Col, Container, Form, FormControl, Navbar, Row } from 'react-bootstrap'
+import { Button, Container, Form, FormControl, Navbar, Row } from 'react-bootstrap'
 import tz_lookup from 'tz-lookup'
 import ReactPaginate from 'react-paginate'
+import RadarStation from './RadarStation'
 
 export default function App() {
 	const [data, setData] = useState([])
@@ -118,24 +119,7 @@ export default function App() {
 						<h1>Radar Stations</h1>
 						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, cumque unde, ab explicabo excepturi tempora harum perspiciatis ipsum amet iure eos ducimus quas id ut natus libero animi ratione sunt.</p>
 						<Row xs={1} md={2} xl={3}>
-							{currentPageData.map(station => {
-								const lat = station.geometry.coordinates[1]
-								const lng = station.geometry.coordinates[0]
-								return (
-									<Col key={station.properties.id} className="mb-3">
-										<Card className="h-100">
-											<Card.Body>
-												<Card.Title>Station Name: {station.properties.name}</Card.Title>
-												<Card.Text>
-													<strong>Station Identifier:</strong> {station.properties.id}<br/>
-													<strong>GPS Coordinates:</strong> <a href={`https://www.google.com/maps/@${lat},${lng},14z`} target="_blank" rel="noreferrer">{lat}, {lng}</a><br/>
-													<strong>Altitude:</strong> {station.properties.elevation.value}
-												</Card.Text>
-											</Card.Body>
-										</Card>
-									</Col>
-								)
-							})}
+							{currentPageData.map(station => <RadarStation key={station.properties.id} station={station} /> )}
 						</Row>
 						{pageCount > 2 && <ReactPaginate
 							previousLabel={"<"}
