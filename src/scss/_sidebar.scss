@@ -1,0 +1,31 @@
+.sidebar {
+	background: #444;
+	min-height: auto;
+	color: #fff;
+	@include lg {
+		padding: 1rem;
+		min-height: 100vh;
+	}
+
+	.navbar {
+		position: fixed;
+		inset: 0 0 auto;
+		z-index: 1030;
+		background-color: #fff;
+		@include lg {
+			background-color: transparent;
+			position: relative;
+		}
+	}
+
+	@include lg {
+		.container-fluid, .navbar-nav {
+			flex-direction: column;
+		}
+	}
+
+	.list-group-item {
+		color: #fff;
+		background-color: transparent;
+	}
+}

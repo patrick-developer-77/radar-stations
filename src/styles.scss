@@ -1,0 +1,12 @@
+@import "~bootstrap/scss/bootstrap";
+@import './scss/mixins';
+
+@import "./scss/main";
+@import "./scss/sidebar";
+
+body {
+	padding-top: 56px;
+	@include lg {
+		padding-top: 0;
+	}
+}

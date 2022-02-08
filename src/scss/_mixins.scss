@@ -1,0 +1,25 @@
+@mixin sm() {
+	@media (min-width: 36rem) {
+		@content;
+	}
+}
+@mixin md() {
+	@media (min-width: 48rem) {
+		@content;
+	}
+}
+@mixin lg() {
+	@media (min-width: 62rem) {
+		@content;
+	}
+}
+@mixin xl() {
+	@media (min-width: 75rem) {
+		@content;
+	}
+}
+@mixin xxl() {
+	@media (min-width: 87.5rem) {
+		@content;
+	}
+}
