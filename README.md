@@ -17,18 +17,18 @@ Please let me know if you have any questions. This was a fun challenge and I hop
 ## Must-Have
 
 1. Using your framework of choice create a page with the following structure
-	A. The page should have 2 regions (25/75)
-	B. The main content section should contain the page title and body copy.
+	1. The page should have 2 regions (25/75)
+	2. The main content section should contain the page title and body copy.
 2. In the main content section, create a responsive grid of content from the following API:
-	A. https://www.weather.gov/documentation/services-web-api
-	B. https://api.weather.gov/radar/stations
-	C. Each block should contain the following information
-		I. Station Name
-		II. Station Identifier
-		III. GPS Coordinates
-		IV. Altitude
-	D. Results should be paginated, displaying 9 stations at a time.
-	E. GPS Coordinates link to Google Map of the location
+	1. https://www.weather.gov/documentation/services-web-api
+	2. https://api.weather.gov/radar/stations
+	3. Each block should contain the following information
+		1. Station Name
+		2. Station Identifier
+		3. GPS Coordinates
+		4. Altitude
+	4. Results should be paginated, displaying 9 stations at a time.
+	5. GPS Coordinates link to Google Map of the location
 3. Use the sidebar to add filtering by timezone
 4. API Error Handling
 
